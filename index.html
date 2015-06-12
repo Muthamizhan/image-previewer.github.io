@@ -11,26 +11,48 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css">
 		<link rel="stylesheet" href="lib/angular-material.min.css">
+		<link rel="stylesheet" href="style.css">
 		<meta name="viewport" content="initial-scale=1" />
 	</head>
 	<body layout="column" ng-controller="AppCtrl as panel">
 		<md-toolbar layout="row">
 			<div class="md-toolbar-tools">
-				<md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
-				<md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
+				<md-button  hide-gt-md ng-click="toggleSidenav('left')"  class="md-icon-button">
+				<md-icon aria-label="Menu"  md-svg-icon="img/menu.svg"></md-icon>
 				</md-button>
 				
 			</div>
 		</md-toolbar>
 		<div layout="row" flex>
-			<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-				        <md-button ng-click="panel.selectTab(1)">Facebook</md-button>
-				        <md-button ng-click="panel.selectTab(2)">Twitter</md-button>
+			<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2 sidenav" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+				<md-toolbar>
+				    <h1 class="md-toolbar-tools">Choose Your Poison</h1>
+				</md-toolbar>
+		        <md-button ng-click="panel.selectTab(1)">Facebook</md-button>
+		        <md-button ng-click="panel.selectTab(2)">Twitter</md-button>
 
 			</md-sidenav>
-			<div layout="column" flex id="content">
-				<md-content layout="column" flex class="md-padding" ng-show="panel.isSelected(1)">
-						facebook
+			<div layout="column" flex id="content" >
+				<md-content layout="column" flex class="md-padding" ng-show="panel.isSelected(1)" class="content">
+					<div layout="row" class="fb-container">
+						<div flex offset="5">
+							<div class="fb-dp-container">
+								<img id="fb-dp" src="img/muthu.jpg">
+							</div>
+							<img id="fb-cover" src="img/cover.jpg">
+						</div>
+						<div class="newsfeed">
+								<div class="top-icon">
+									<img src="img/muthu.jpg">
+									<label>Neews Feed icon Image</label>
+								</div>
+								<div class="newsfeed-post">
+									<img src="img/muthu.jpg">
+									<h6>like</h6><h6>comment</h6>
+								</div>
+
+						</div>
+					</div>
 				</md-content>
 				<md-content layout="column" flex class="md-padding" ng-show="panel.isSelected(2)">
 						twitter
@@ -38,11 +60,11 @@
 			</div>
 		</div>
 
-			<form action="upload.php" method="post" enctype="multipart/form-data">
-				<input type="file" name="file">
+		<form action="upload.php" method="post" enctype="multipart/form-data">
+			<input type="file" name="file">
 
-				<md-button type="Submit" class="md-raised" value="upload">Upload</md-button>
-			</form>
+			<md-button type="Submit" class="md-raised" value="upload">Upload</md-button>
+		</form>
 
 		<!-- Angular Material Dependencies -->
 		<script src="lib/angular.min.js"></script>
